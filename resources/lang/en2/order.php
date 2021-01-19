@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'title'                => 'Order manager',
+    'config_title'         => 'Config info order',
+    'create_success'       => 'Create new order success!',
+    'list'                 => 'Order list',
+    'id'                   => 'ID',
+    'email'                => 'Email',
+    'subtotal'             => 'Subtotal',
+    'shipping'             => 'Shipping',
+    'discount'             => 'Discount',
+    'total'                => 'Total',
+    'received'             => 'Received',
+    'payment_method'       => 'Payment method',
+    'payment_method_short' => 'PM method',
+    'currency'             => 'Currency',
+    'exchange_rate'        => 'Exchange rate',
+    'status'               => 'Status',
+    'created_at'           => 'Created at',
+    'action'               => 'Action',
+    'delete'               => 'Delete order',
+    'edit'                 => 'Edit',
+    'order_new'            => 'Add new',
+    'add_new'              => 'Add new',
+    'add_new_title'        => 'Add new order',
+    'add_new_des'          => 'Create a new order',
+    'export_batch'         => 'Export',
+    'update_success'       => 'Update success!',
+    'config_info'          => 'Config order',
+    'store'                => 'Store',
+
+];
