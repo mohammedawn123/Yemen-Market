@@ -22,7 +22,7 @@ Route::group(
         $router->get('locale/{code}', function ($code) {
             session(['locale' => $code]);
             app::setLocale( $code);
-            return back();
+          redirect()->back();
         })->name('locale');
 
 
