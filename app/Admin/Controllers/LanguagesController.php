@@ -4,11 +4,7 @@ namespace App\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use Illuminate\Http\Request;
-use App\Mcategory ;
-use App\Category_description ;
-use App\Category_path ;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Validation , Redirect,Response;
@@ -195,6 +191,12 @@ class LanguagesController extends Controller
         return response()->json([ 'success' => $success]);
 
 
+    }
+    public function ChangeLang($code)
+    {
+        session(['locale' => $code]);
+        app::setLocale( $code);
+        return redirect()->route('admin.home2');
     }
     public function  Delete(Request $request)
     {

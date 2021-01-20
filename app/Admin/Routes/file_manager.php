@@ -6,6 +6,12 @@ $router->group(['prefix' => 'uploads'], function ($router) {
     $router->post('filemanager/folder', 'FileManagerController@create_folder');
     $router->post('filemanager/delete_folder', 'FileManagerController@delete_folder');
     $router->post('filemanager/upload_file/{directory}', 'FileManagerController@upload_file');
-    $router->get('file_manager', 'FileManagerController@test')->name('admin.file_manager');
+  //  $router->get('file_manager', 'FileManagerController@test')->name('admin.file_manager');
 
+});
+
+$router->group(['prefix' => 'file-manager'], function ($router) {
+
+    $router->get('fm-button', 'FileManagerController@ShowFileManager')
+    ->name('admin.fm_button');
 });

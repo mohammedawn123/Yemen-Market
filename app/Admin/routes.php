@@ -19,11 +19,7 @@ Route::group(
         $router->get('/', 'HomeController@index')->name('admin.home2');
 
 
-        $router->get('locale/{code}', function ($code) {
-            session(['locale' => $code]);
-            app::setLocale( $code);
-          redirect()->back();
-        })->name('locale');
+        $router->get('locale/{code}', 'LanguagesController@ChangeLang')->name('locale');
 
 
     });

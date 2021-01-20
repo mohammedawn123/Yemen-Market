@@ -63,7 +63,7 @@ height: 25px; " src="{{ isset(Auth::user()->photo ) ?  asset( '/view/image/'.Aut
                 </a>
                 <ul class="collapse">
                     <li><a href="#">Extension Installer</a></li>
-                    <li><a href="{{url('/file-manager/fm-button')}}">Modifications</a></li>
+                    <li><a href="#">Modifications</a></li>
                     <li><a href="#">Modules</a></li>
                     <li><a href="#">Shipping</a></li>
                     <li><a href="#">Payments</a></li>
@@ -133,6 +133,17 @@ height: 25px; " src="{{ isset(Auth::user()->photo ) ?  asset( '/view/image/'.Aut
                         <ul class="collapse">
                             <li><a href="#">Layouts</a></li>
                             <li><a href="#">Banners</a></li>
+                        </ul>
+                    </li>
+                    <li id="filemanager">
+                        <a class="parent">
+
+                            <span>Files Manager</span>
+                        </a>
+                        <ul class="collapse">
+
+                            @if(Auth::user()->can('filemanager.show') || Auth::user()->isAdministrator())   <li><a href="{{route('admin.fm_button')}}">Files Manager</a></li> @endif
+
                         </ul>
                     </li>
                     <li><a class="parent">

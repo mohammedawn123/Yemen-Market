@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function index()
     {
- 
+
         $breadcrumb['heading_title']='<i class="fa fa-bar-chart"></i> '.'Dashboard';
         $breadcrumb['buttons']='';
         $breadcrumb['breadcrumbs'][] = array(
@@ -34,7 +34,7 @@ class HomeController extends Controller
             return view('admin.default', $data);
           }
 
-       
+
         $data['users'] = new Customer;
         $data['orders'] = new ShopOrder;
         $data['mapStyleStatus'] = ShopOrder::$mapStyleStatus;
@@ -102,7 +102,7 @@ class HomeController extends Controller
 
     }
 
- 
+
 
     public function deny()
     {
@@ -114,7 +114,7 @@ class HomeController extends Controller
         );
         Session::flash('breadcrumbs' , $breadcrumb);
 
-        $data = []; 
+        $data = [];
         $data = [
             'title' =>'Permission Denied',
             'icon' => '',
@@ -124,7 +124,7 @@ class HomeController extends Controller
         return view('admin.deny', $data);
     }
 
- public function getSumOrderTotalInMonth() 
+ public function getSumOrderTotalInMonth()
       {
         return (new ShopOrder)->selectRaw('DATE_FORMAT(created_at, "%m-%d") AS md,
         SUM(total/exchange_rate) AS total_amount, count(id) AS total_order')
@@ -148,5 +148,5 @@ class HomeController extends Controller
             ->orderBy('count', 'desc')
             ->get();
     }
-  
+
 }

@@ -70,7 +70,7 @@ height: 25px; " src="<?php echo e(isset(Auth::user()->photo ) ?  asset( '/view/i
                 </a>
                 <ul class="collapse">
                     <li><a href="#">Extension Installer</a></li>
-                    <li><a href="<?php echo e(url('/file-manager/fm-button')); ?>">Modifications</a></li>
+                    <li><a href="#">Modifications</a></li>
                     <li><a href="#">Modules</a></li>
                     <li><a href="#">Shipping</a></li>
                     <li><a href="#">Payments</a></li>
@@ -134,6 +134,17 @@ height: 25px; " src="<?php echo e(isset(Auth::user()->photo ) ?  asset( '/view/i
                         <ul class="collapse">
                             <li><a href="#">Layouts</a></li>
                             <li><a href="#">Banners</a></li>
+                        </ul>
+                    </li>
+                    <li id="filemanager">
+                        <a class="parent">
+
+                            <span>Files Manager</span>
+                        </a>
+                        <ul class="collapse">
+
+                            <?php if(Auth::user()->can('filemanager.show') || Auth::user()->isAdministrator()): ?>   <li><a href="<?php echo e(route('admin.fm_button')); ?>">Files Manager</a></li> <?php endif; ?>
+
                         </ul>
                     </li>
                     <li><a class="parent">

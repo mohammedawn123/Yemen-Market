@@ -15,10 +15,10 @@ class FileManagerController extends Controller
 
     }
 
-    public function test()
+    public function ShowFileManager()
     {
+        return view('file-manager::fmButton');
 
-return view('admin.file_manager');
     }
 
 
@@ -274,5 +274,17 @@ return view('admin.file_manager');
         return  Response()->json($json);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
