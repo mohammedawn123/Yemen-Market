@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/ho_chi_minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -231,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		 'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 		 //  'Admin' => App\Admin\Admin::class,
+        'Cart' => App\Services\ShoppingCart\CartFacade::class,
 
     ],
 

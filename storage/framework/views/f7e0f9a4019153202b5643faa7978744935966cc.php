@@ -58,14 +58,6 @@
 <!-- iCheck -->
 <script src="<?php echo e(url('/')); ?>/view/javascript/iCheck/icheck.min.js" type="text/javascript"></script>
 
-<!-- codemirror -->
-
-<!--
-<script type="text/javascript" src="<?php echo e(url('/')); ?>/view/javascript/codemirror/lib/codemirror.js"></script>
-<script type="text/javascript" src="<?php echo e(url('/')); ?>/view/javascript/codemirror/lib/xml.js"></script>
-<script type="text/javascript" src="<?php echo e(url('/')); ?>/view/javascript/codemirror/lib/formatting.js"></script>
--->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.5.2/js/jquery.overlayScrollbars.min.js"></script>
 
 

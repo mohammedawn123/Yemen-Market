@@ -14,12 +14,22 @@ use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
 
-     use AuthenticatesUsers;
+   //  use AuthenticatesUsers;
 
 
+    public function  goToAdmin()
+    {
+        Auth::guard('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        if (Admin::user()) {
+            return redirect()->route('admin.home2');
+        }
+        return view('admin.auth.login');
+    }
     public function  getLogin()
     {
-        if (Auth::user()) {
+        if (Admin::user()) {
             return redirect()->route('admin.home2');
         }
          return view('admin.auth.login');
@@ -43,10 +53,11 @@ class LoginController extends Controller
        return view('admin.auth.login' , ['error_login' => $error_login]);
     }
 
-    public function Logout()
+    public function Logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        request()->session()->invalidate();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.getLogin');
 
     }

@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = '/shop';
     public const ADMIN = '/admin';
 
     /**
@@ -62,7 +62,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware([ 'Localization' , 'web'])
              ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->group( function($router){
+                if (file_exists($routes = base_path('routes/web.php'))) {
+                    $this->loadRoutesFrom($routes); }
+
+            });
+
     }
  protected function mapAdminRoutes()
     {

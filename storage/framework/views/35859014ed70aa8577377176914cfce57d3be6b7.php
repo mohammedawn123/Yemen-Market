@@ -30,14 +30,19 @@ height: 35px;"  class="img-thumbnail" src="<?php echo e(isset(Auth::user()->phot
             </li>
         <?php endif; ?>
             
-            <li>
-                <a href="<?php echo e(route('admin.logout')); ?>" >
-                    <span class="hidden-xs hidden-sm hidden-md"><?php echo e(trans('language.logout')); ?></span>
-                    <i class="fa fa-sign-out fa-lg"></i>
-                </a>
+          
 
-            </li>
 
+  <li>
+      <a href="#" onclick="$('#logout-form').submit();">
+          <span class="hidden-xs hidden-sm hidden-md"><?php echo e(trans('language.logout')); ?></span>
+            <i class="fa fa-sign-out fa-lg"></i>
+        </a>
+
+      <form action="<?php echo e(route('admin.logout')); ?>" method="post" id="logout-form" style="display:none;">
+      <?php echo csrf_field(); ?>
+      </form>
+  </li>
 
   </ul>
     <ul class="nav navbar-nav">

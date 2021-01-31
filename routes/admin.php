@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App\Http\Controllers\AdminControllers\Auth' ],function () {
 Route::group(['middleware'=>'guest:admin'], function ()
     {     Route::get('login', 'LoginController@getLogin')->name('admin.getLogin');
+          Route::get('goToAdmin', 'LoginController@goToAdmin')->name('admin.goToAdmin');
           Route::post('login', 'LoginController@Login')->name('admin.login');
      });
 
 Route::group(['middleware'=>'auth:admin'], function ()
     {
-            Route::get('logout', 'LoginController@Logout')->name('admin.logout');
+            Route::post('logout', 'LoginController@Logout')->name('admin.logout');
         });
 
 

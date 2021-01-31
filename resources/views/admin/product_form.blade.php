@@ -549,12 +549,12 @@
                                              style="height: 150px; overflow: auto;">
                                             @if(isset($categories) && $categories !== null)
                                               @foreach ($categories as $category)
-                                                    @foreach ($category['category_description'] as $description)
+
                                                 <div id="product-category"><i class="fa fa-minus-circle"></i>
-                                                     {{$description['name'] }}
-                                                        <input type="hidden" name="product_category[]" value=" {{$description['category_id']}}" />
+                                                     {{$category['name'] }}
+                                                        <input type="hidden" name="product_category[]" value=" {{$category['category_id']}}" />
                                                  </div>
-                                                @endforeach
+
                                                 @endforeach
                                             @endif
                                         </div>

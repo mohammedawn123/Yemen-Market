@@ -7,16 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacturer extends Model
 {
 
-public $table='manufacturers';
+    protected $table='manufacturers';
     public $timestamps=false;
+    protected $primaryKey = 'id' ;
     protected $fillable = [
         'id', 'name', 'image','email' ,'phone' , 'address', 'status','sort_order'
     ];
-    public function Manufacturer_to_store()
+    public function ManufacturerProducts()
     {
-        return $this->hasMany('App\Manufacturer_to_store' , 'manufacturer_id');
+        return $this->hasMany('App\Product' ,   'manufacturer_id' , 'id'  );
     }
 
+    public function getManufacturers()
+    {
+        return $this->where($this->getTable() . '.status' , 1);
 
+    }
+    public function getProducts()
+    {
+        return $this->with('ManufacturerProducts')->where($this->getTable() . '.status' , 1);
+
+    }
 
 }

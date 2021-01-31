@@ -16,6 +16,7 @@
     </head>
     <body>
 
+
         <div id="cms-demo">
              <div class="container">
                 <div class="row">
@@ -30,17 +31,17 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="demonstration-box">
-                            <a href="<?php echo e(url('/admin')); ?>" target="_blank" class="box-overlay">
+                            <a href="<?php echo e(route('admin.loginAdmin')); ?>" target="_blank" class="box-overlay">
 <span class="hidden-xs">View Administration
     <br>
-<br>email: <i>admin@gmail.com</i>
+<br>Email: <i>user3@gmail.com</i>
 <br>Password: <i>123456</i>
 </span>
                                 <span class="visible-xs-block">View Administration</span>
                             </a>
                             <h2>Administration</h2>
                             <img src="<?php echo e(url('/')); ?>/application/store-admin.png" class="img-responsive">
-                            <p class="visible-xs-block">Login &amp; Password: demo</p>
+                            <p class="visible-xs-block">Email : user3@gmail.com &amp; Password: 123456</p>
                         </div>
                     </div>
                 </div>

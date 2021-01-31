@@ -683,13 +683,13 @@ unset($__errorArgs, $__bag); ?>
                                              style="height: 150px; overflow: auto;">
                                             <?php if(isset($categories) && $categories !== null): ?>
                                               <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <?php $__currentLoopData = $category['category_description']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $description): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <div id="product-category"><i class="fa fa-minus-circle"></i>
-                                                     <?php echo e($description['name']); ?>
 
-                                                        <input type="hidden" name="product_category[]" value=" <?php echo e($description['category_id']); ?>" />
+                                                <div id="product-category"><i class="fa fa-minus-circle"></i>
+                                                     <?php echo e($category['name']); ?>
+
+                                                        <input type="hidden" name="product_category[]" value=" <?php echo e($category['category_id']); ?>" />
                                                  </div>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <?php endif; ?>
                                         </div>

@@ -62,7 +62,11 @@ class Mcategory extends Model
                 $categories = $categories->where($key, $value);
             }
         }
-
+        if(count($data['whereinOpt'] ?? [])) {
+            foreach ($data['whereinOpt']  as $key => $arrValue) {
+                $categories = $categories->whereIn($key, $arrValue);
+            }
+        }
         if (!empty($data['keyword']))
         {
             $keyword=$data['keyword'];

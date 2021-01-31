@@ -21,7 +21,7 @@
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                             </div>
                             <?php  } ?>
-                            <form action="{{route('admin.login')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('admin.login')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="input-email">{{trans('product.entry_email')}}</label>

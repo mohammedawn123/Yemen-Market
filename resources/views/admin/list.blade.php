@@ -191,9 +191,7 @@
          });
 
      });
-     $(".close").click(function () {
-         hidePopup();
-     });
+
 
 
 
@@ -228,10 +226,12 @@
                           },
                           success: function (data) {
                               if(data.error == 1){
-                                  alertJs('error', data.msg);
+                                  //alertJs('error', data.msg);
+                                  alertMsg('Access denied!', 'You not have a permission to delete this item..', 'error');
                               }else{
                                   $.pjax.reload({container:'#pjax-container' });
                                   resolve(data);
+
                               }
 
                           }
@@ -241,7 +241,8 @@
 
           }).then((result) => {
               if (result.value) {
-                  alertJs('success','Item has been deleted.');
+                  alertMsg('Success','Item has been deleted.' ,'success');
+                  //alertJs('success','Item has been deleted.');
               } else if (
                   // Read more about handling dismissals
                   result.dismiss === Swal.DismissReason.cancel

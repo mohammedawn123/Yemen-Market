@@ -21,7 +21,7 @@
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                             </div>
                             <?php  } ?>
-                            <form action="<?php echo e(route('admin.login')); ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo e(route('admin.login')); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group">
                                     <label for="input-email"><?php echo e(trans('product.entry_email')); ?></label>

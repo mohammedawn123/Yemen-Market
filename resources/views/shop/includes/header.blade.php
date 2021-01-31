@@ -1,17 +1,19 @@
 
 <script type="text/javascript" src="{{asset('/catalog/view/javascript/jquery/jquery-2.1.1.min.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.marquee/1.3.1/jquery.marquee.min.js"></script>
+
 <link href="{{url('/')}}/catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script type="text/javascript" src="{{url('/')}}/catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
+
 <link href="{{url('/')}}/catalog/view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 <link type="text/css" href="{{url('/')}}/catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet" media="screen">
 <link type="text/css" href="{{url('/')}}/catalog/view/javascript/jquery/swiper/css/swiper.min.css" rel="stylesheet" media="screen">
 <link type="text/css" href="{{url('/')}}/catalog/view/javascript/jquery/swiper/css/opencart.css" rel="stylesheet" media="screen">
 <script src="{{url('/')}}/catalog/view/javascript/jquery/swiper/js/swiper.jquery.js" type="text/javascript"></script>
 <script src="{{url('/')}}/catalog/view/javascript/common.js" type="text/javascript"></script>
-
+@stack('styles')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.5.2/css/OverlayScrollbars.min.css" rel="stylesheet"/>
 
-@stack('styles')
 
 <style type="text/css" class="init">
 

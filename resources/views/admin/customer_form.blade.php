@@ -7,10 +7,7 @@
   <div class="container-fluid">
 
       <div class="panel panel-default">
-          <div class="panel-heading">
 
-              <h3 class="panel-title"><i class="fa fa-user"> </i>Customer Form</h3>
-          </div>
 
       <div class="panel-body">
 
@@ -18,8 +15,10 @@
         <form action="{{$action}}" method="post"   class="form-horizontal" id="form-customer">
             {{ csrf_field()}}
             <div class="tab-pane  active" >
+<br>
 
-
+                <fieldset id="account">
+                    <legend>Customer Personal Details</legend>
                 <div class="form-group required">
                     <label class="col-sm-2 control-label" for="first_name">{{trans('customer.first_name')}}</label>
                     <div class="col-sm-8">
@@ -115,27 +114,9 @@
                         </div>
                 </div>
 
+                </fieldset>
 
-                <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="password">{{trans('customer.password')}}</label>
-                    <div class="col-sm-8">
-                        <input type="password" name="password" value="" placeholder="{{trans('customer.password')}}" id="password" class="form-control">
-                        @error('password')
-                        <div class="text-danger">{{$message}}</div>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="Confirmation">Confirmation</label>
-                    <div class="col-sm-8">
-                        <input type="password" name="Confirmation" value="" placeholder="Confirmation" id="Confirmation" class="form-control">
-                        @error('Confirmation')
-                        <div class="text-danger">{{$message}}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group required">
+                 <div class="form-group required">
                     <label class="col-sm-2 control-label" for="country">
                         {{trans('customer.country')}}
                     </label>
@@ -194,7 +175,28 @@
                         </select>
                     </div>
                 </div>
+                <fieldset id="account">
+                    <legend>Customer Password</legend>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="password">{{trans('customer.password')}}</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="password" value="" placeholder="{{trans('customer.password')}}" id="password" class="form-control">
+                            @error('password')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
 
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="Confirmation">Confirmation</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="Confirmation" value="" placeholder="Confirmation" id="Confirmation" class="form-control">
+                            @error('Confirmation')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </fieldset>
 
             </div>
         </form>

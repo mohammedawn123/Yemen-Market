@@ -30,7 +30,7 @@ class ProductsController extends Controller
 {
 
   public function index()
-    {  
+    {
 
         $breadcrumb = [
             'buttons'       => getTopButtons('products/create/new'),
@@ -319,19 +319,18 @@ foreach ($dataTmp as $row)
 
         $data=$product->toarray();
         $data['product_description']=$Product_description;
-        $p=$product->getOne()->where('product_id' , $id)->get()->toArray();
 
-        $data['categories']=$p[0]['categories'];
+        // get categories of product
+        $ids=$product->categories->keyby('category_id')->toarray();
+        $whereinOpt=array('mcategories.category_id' =>   array_keys( $ids));
+        $categories=(new Mcategory)->getAllCategories( array('whereinOpt'=>$whereinOpt) );
+        $data['categories']=$categories->toarray();
 
-        //$getProduct=$product->getOne()->where('product_id' , $id)->get()->toArray();
-
+        // get attributes of product
         $product_attributes =$product->getProductAttributes($id);
         $data['product_attributes'] = array();
 
         foreach ($product_attributes as $product_attribute) {
-            /*$attribute=Attribute::with(['Attribute_description'=>function($query){
-                $query->where('language_id' , 1 );
-            }])->where('attribute_id' ,$product_attribute['attribute_id'])->get()->toArray();*/
 
             $attribute=Attribute::find($product_attribute['attribute_id']);
             $attributeDescription=$attribute->Attribute_description()->where('language_id' , session('language_id') )->get()->keyby('language_id')->toarray();
@@ -351,11 +350,11 @@ foreach ($dataTmp as $row)
         $data['product_discounts']= $product_discounts;
 
 //////////////////////////// product specials /////////////////////////
-///
+
         $product_specials=$product->product_specials->toArray();
         $data['product_specials']= $product_specials;
         $data['customer_groups']= (new CustomerGroup)->getList();
-        $data['manufacturer']= Manufacturer::find($product->manufacturer_id);
+        $data['manufacturer']=$product->Manufacturer;
         $data['tax_rates']=  tax_rate::get()->toArray();
         $data['action']=url('admin/products/update') ;
 

@@ -45,17 +45,13 @@ class Product extends Model
         return $this->belongsTo('App\tax_rate' , 'tax_class_id' , 'tax_rate_id' );
     }
 
+    public function Manufacturer()
+    {
+        return $this->beLongsTo('App\Manufacturer'  , 'manufacturer_id' , 'id' );
 
-    public function getOne()
-     {
+    }
 
-          return $this->with(['Product_description', 'categories'=>function($query){
-              $query->where('status' , 1) ;
-              $query->with(['Category_description'=>function($query){
-                  $query->where('category_descriptions.language_id' , session('language_id'));  }])  ;
-          } ]);
 
-     }
 // used
    public function getProductAttributes($product_id)
     {

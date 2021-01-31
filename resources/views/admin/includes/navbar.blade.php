@@ -66,15 +66,17 @@ height: 35px;"  class="img-thumbnail" src="{{ isset(Auth::user()->photo ) ?  ass
               <li><a href="#" target="_blank">Support Forum</a></li>
             </ul>
           </li>--}}
-            <li>
-                <a href="{{route('admin.logout')}}" >
+          {{--  <li>
+                <form action="{{route('admin.logout')}}" method="post">
+                    @csrf
+                <a  href="#" onclick="this.parentNode.submit(); return false;" >
                     <span class="hidden-xs hidden-sm hidden-md">{{trans('language.logout')}}</span>
                     <i class="fa fa-sign-out fa-lg"></i>
                 </a>
+                </form>
+            </li>--}}
 
-            </li>
 
-{{--
   <li>
       <a href="#" onclick="$('#logout-form').submit();">
           <span class="hidden-xs hidden-sm hidden-md">{{trans('language.logout')}}</span>
@@ -85,7 +87,7 @@ height: 35px;"  class="img-thumbnail" src="{{ isset(Auth::user()->photo ) ?  ass
       @csrf
       </form>
   </li>
---}}
+
   </ul>
     <ul class="nav navbar-nav">
 
