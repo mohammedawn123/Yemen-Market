@@ -132,11 +132,11 @@
                 <div class="box-body table-responsive no-padding box-primary">
                     <div class="box">
                         {{-- <div class="row"> --}}
-                        <div class="col-md-4">
-                            <div id="chart-pie" style="width:100%; height:auto;"></div>
+                        <div class="col-md-4" >
+                            <div id="chart-pie" style="width:100%; height:auto;  "></div>
                         </div>
-                        <div class="col-md-8">
-                            <div id="chart-month" style="width:100%; height:auto;"></div>
+                        <div class="col-md-8"  >
+                            <div id="chart-month" style="width:100%; height:auto;   "></div>
                         </div>
                         {{-- </div> --}}
                     </div>
@@ -361,7 +361,7 @@
 @push('home_scripts')
     <script src="{{url('/')}}/view/javascript/chartjs/highcharts.js" type="text/javascript"></script>
     <script src="{{url('/')}}/view/javascript/chartjs/highcharts-3d.js" type="text/javascript"></script>
-    <script src="{{url('/')}}/view/javascript/chartjs/adminlte.min.js" type="text/javascript"></script>
+   <!-- <script src="{{url('/')}}/view/javascript/chartjs/adminlte.min.js" type="text/javascript"></script>-->
 
     <script type="text/javascript">
 

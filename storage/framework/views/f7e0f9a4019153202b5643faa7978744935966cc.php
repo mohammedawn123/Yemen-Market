@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo e(trans('product.code')); ?>" dir="<?php echo e(trans('product.direction')); ?>">
+<html lang="<?php echo e(trans('product.code')); ?>" dir="<?php echo e(trans('product.direction')); ?>" manifest="makecach.indexcach">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +53,7 @@
 
 
 <script src="<?php echo e(url('/')); ?>/view/javascript/sweetalert2.all.min.js" type="text/javascript"></script>
-<script src="<?php echo e(url('/')); ?>/view/javascript/promise-polyfill.js" type="text/javascript"></script>
+<!--<script src="<?php echo e(url('/')); ?>/view/javascript/promise-polyfill.js" type="text/javascript"></script>-->
 
 <!-- iCheck -->
 <script src="<?php echo e(url('/')); ?>/view/javascript/iCheck/icheck.min.js" type="text/javascript"></script>
@@ -85,11 +85,7 @@
         ).draw();
 
     }
-    function delete_one_category(category_id) {
 
-        window.location="categories/delete/" + category_id ;
-
-    }
     $(document).ready( function () {
 
 
@@ -261,8 +257,6 @@
 <?php echo $__env->yieldPushContent('home_scripts'); ?>
 <?php echo $__env->yieldPushContent('scripts'); ?>
 
-<?php echo $__env->yieldPushContent('category_scripts'); ?>
-<?php echo $__env->yieldPushContent('product_scripts'); ?>
 <?php echo $__env->yieldPushContent('users_scripts'); ?>
 <?php echo $__env->yieldPushContent('roles_scripts'); ?>
 <?php echo $__env->yieldPushContent('permissions_scripts'); ?>

@@ -7,17 +7,11 @@ use  Illuminate\Contracts\Support\Arrayable ;
 use  Illuminate\Contracts\Support\Jsonable ;
 class CartItem implements Arrayable,  Jsonable
 {
-    /**
-     * The rowID of the cart item.
-     *
-     * @var string
-     */
-    public $rowId;
 
     /**
      * The ID of the cart item.
      *
-     * @var int|string
+     * @var int
      */
     public $id;
 
@@ -59,7 +53,7 @@ class CartItem implements Arrayable,  Jsonable
     /**
      * CartItem constructor.
      *
-     * @param int|string $id
+     * @param int      $id
      * @param string     $name
      * @param float      $qty
      * @param float      $price
@@ -75,13 +69,13 @@ class CartItem implements Arrayable,  Jsonable
         $this->qty    = floatval($qty);
         $this->tax    = floatval($tax);
         $this->options  =$options;
-        $this->rowId = $this->generateRowId($id, $options);;
+
     }
 
     /**
      * Create a new instance from the given attributes.
      *
-     * @param int|string $id
+     * @param int $id
      * @param string     $name
      * @param float      $qty
      * @param float      $price
@@ -93,19 +87,7 @@ class CartItem implements Arrayable,  Jsonable
     {
         return new self($id, $name,$qty, $price, $options, $tax);
     }
-    /**
-     * Generate a unique id for the cart item.
-     *
-     * @param string $id
-     * @param array  $options
-     * @return string
-     */
-    protected function generateRowId($id, array $options)
-    {
-        ksort($options);
 
-        return md5($id . serialize($options));
-    }
 
     /**
      * Convert the object to its JSON representation.

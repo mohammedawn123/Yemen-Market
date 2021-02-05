@@ -11,7 +11,7 @@
       <div class="panel-body">
         <form action="{{$action}}" method="POST" enctype="multipart/form-data" id="form-category" class="form-horizontal">
 
-        {{ csrf_field()}}
+        @csrf
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab">{{trans('product.tab_general')}}</a></li>
             <li><a href="#tab-data" data-toggle="tab">{{trans('product.tab_data')}}</a></li>
@@ -171,7 +171,7 @@
 
   @endsection
 
-@push('category_scripts')
+@push('scripts')
     <script type="text/javascript">
         <?php foreach ($languages as $language) { ?>
         $('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});
@@ -186,7 +186,7 @@
                     url: "{{url('admin/categories/autocomplete')}}"  ,
                     type:"post" ,
                     dataType: 'json',
-                    data: { filter_name: filter_name1 } ,
+                    data: { filter_name: filter_name1 ,   _token: '{{ csrf_token() }}' } ,
                     success: function(json) {
                         json.unshift({
                             category_id: 0,

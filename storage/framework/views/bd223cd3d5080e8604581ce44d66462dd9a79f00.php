@@ -968,7 +968,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
         </div>
-        <?php $__env->startPush('product_form_scripts'); ?>
+        <?php $__env->startPush('scripts'); ?>
             <script type="text/javascript">
 
 
@@ -980,7 +980,7 @@ unset($__errorArgs, $__bag); ?>
                             url: "<?php echo e(url('admin/products/manufacturer_autocomplete')); ?>",
                             type: "post",
                             dataType: 'json',
-                            data: {filter_name: filter_name1},
+                            data: {filter_name: filter_name1  ,   _token: '<?php echo e(csrf_token()); ?>'},
                             success: function (json) {
                                 json.unshift({
                                     manufacturer_id: 0,
@@ -1060,34 +1060,6 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-            // Related
-            $('input[name=\'related\']').autocomplete({
-                'source': function (request, response) {
-                    $.ajax({
-                        url: '',
-                        dataType: 'json',
-                        success: function (json) {
-                            response($.map(json, function (item) {
-                                return {
-                                    label: item['name'],
-                                    value: item['product_id']
-                                }
-                            }));
-                        }
-                    });
-                },
-                'select': function (item) {
-                    $('input[name=\'related\']').val('');
-
-                    $('#product-related' + item['value']).remove();
-
-                    $('#product-related').append('<div id="product-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related[]" value="' + item['value'] + '" /></div>');
-                }
-            });
-
-            $('#product-related').delegate('.fa-minus-circle', 'click', function () {
-                $(this).parent().remove();
-            });
             </script>
         <script type="text/javascript">
             var attribute_row =  <?php echo $attribute_row; ?>;
@@ -1197,19 +1169,6 @@ unset($__errorArgs, $__bag); ?>
         </script>
 
         <?php $__env->stopPush(); ?>
-        <script type="text/javascript">
-            var image_row = 0;
-            function addImage() {
-                html = '<tr id="image-row' + image_row + '">';
-                html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo 'placeholder'; ?>" alt="" title="" data-placeholder="<?php echo 'placeholder'; ?>" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
-                html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo e(trans('product.entry_sort_order')); ?>" class="form-control" /></td>';
-                html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row + '\').remove();" data-toggle="tooltip" title="<?php echo 'button_remove'; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-                html += '</tr>';
-                $('#images tbody').append(html);
-                image_row++;
-            }
-
-            </script>
 
 
 <?php $__env->stopSection(); ?>

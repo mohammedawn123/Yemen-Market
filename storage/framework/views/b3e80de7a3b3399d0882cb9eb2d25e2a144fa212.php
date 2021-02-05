@@ -69,7 +69,7 @@
                                 </p>
                             </div>
                             <div class="button-group">
-                                <button type="button" onclick="addToCart('<?php echo e($product->product_id); ?>' ,'default')" data-toggle="tooltip" data-original-title="Add to Cart">
+                                <button class="addToCart" type="button" onclick="addToCart('<?php echo e($product->product_id); ?>' ,'default')" data-toggle="tooltip" data-original-title="Add to Cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="hidden-xs hidden-sm hidden-md">Add to Cart</span>
                                 </button>

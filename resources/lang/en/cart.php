@@ -4,6 +4,7 @@ return [
     'over'             => 'Product :item has exceeded the maximum number of allowed quantity.',
     'exist'            => 'This product exist in :instance',
     'success'          => 'Add product to :instance successfully!',
+    'update'          => 'your cart updated successfully!',
     'dont_allow_sale'  => 'This product dont allow for sale!',
     'apply'            => 'Apply',
     'coupon'           => 'Coupon',

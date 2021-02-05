@@ -39,30 +39,30 @@ class Cart
 
     public  function add($id, $name = null, $qty = null, $price = null, array $options = [], $tax = 0)
     {
-        $cartitem= $this->createCartItem($id, $name, $qty, $price, $options, $tax);
         $content =  $this->getContent();
-        $content->put($cartitem->rowId, $cartitem);
-       // $this->events->dispatch('cart.added', $cartitem);
+        if($content->has($id))
+        {
+            $qty=$content->pull($id)->qty + $qty ;
+
+        }
+        $cartitem= $this->createCartItem($id, $name, $qty, $price, $options, $tax);
+        $content->put($cartitem->id, $cartitem);
         $this->session->put($this->instance, $content);
         return $cartitem;
     }
 
-    /**
-     * Remove the cart item with the given rowId from the cart.
-     *
-     * @param string $rowId
-     * @return void
-     */
-    public function remove($rowId)
+
+    public function update($instance, $content)
     {
-        $cartItem = $this->get($rowId);
+        $this->session->put($instance, $content);
+    }
+        public function remove($id)
+    {
+        $cartItem = $this->get($id);
 
         $content = $this->getContent();
 
-        $content->pull($cartItem->rowId);
-
-        $this->events->dispatch('cart.removed', $cartItem);
-
+        $content->pull($cartItem->id);
         $this->session->put($this->instance, $content);
     }
     /**
@@ -98,20 +98,20 @@ class Cart
     }
 
     /**
-     * Get a cart item from the cart by its rowId.
+     * Get a cart item from the cart by its $id.
      *
-     * @param string $rowId
+     * @param string $id
      * @return \App\Services\ShoppingCart\CartItem
      */
-    public function get($rowId)
+    public function get($id)
     {
         $content = $this->getContent();
 
-        if (!$content->has($rowId)) {
+        if (!$content->has($id)) {
             return;
         }
 
-        return $content->get($rowId);
+        return $content->get($id);
     }
 
     /**
@@ -195,7 +195,6 @@ class Cart
                     'showPrice' => $product->price,
                     'tax' =>  $item->tax,
                     'url' => 'ddddddd',
-                    'rowId' => $item->rowId,
                     'name' => $product->name,
                 ];
             }

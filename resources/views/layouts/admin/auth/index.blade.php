@@ -9,8 +9,9 @@
     <!-- Font Awesome -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-    @include('admin.includes.header')
+<link href="{{url('/')}}/view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+     <link href="{{url('/')}}/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="{{url('/')}}/view/stylesheet/stylesheet.css" rel="stylesheet" media="screen">
 
 </head>
 <body >

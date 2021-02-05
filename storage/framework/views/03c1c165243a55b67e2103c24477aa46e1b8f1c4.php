@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="demonstration-box">
-                            <a href="<?php echo e(route('admin.loginAdmin')); ?>" target="_blank" class="box-overlay">
+                            <a href="<?php echo e(route('admin.goToAdmin')); ?>" target="_blank" class="box-overlay">
 <span class="hidden-xs">View Administration
     <br>
 <br>Email: <i>user3@gmail.com</i>

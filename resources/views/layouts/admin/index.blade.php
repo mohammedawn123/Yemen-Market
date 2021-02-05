@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{trans('product.code')}}" dir="{{trans('product.direction')}}">
+<html lang="{{trans('product.code')}}" dir="{{trans('product.direction')}}" >
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,7 +54,7 @@
 
 {{-- sweetalert2 --}}
 <script src="{{url('/')}}/view/javascript/sweetalert2.all.min.js" type="text/javascript"></script>
-<script src="{{url('/')}}/view/javascript/promise-polyfill.js" type="text/javascript"></script>
+<!--<script src="{{url('/')}}/view/javascript/promise-polyfill.js" type="text/javascript"></script>-->
 
 <!-- iCheck -->
 <script src="{{url('/')}}/view/javascript/iCheck/icheck.min.js" type="text/javascript"></script>
@@ -86,11 +86,7 @@
         ).draw();
 
     }
-    function delete_one_category(category_id) {
 
-        window.location="categories/delete/" + category_id ;
-
-    }
     $(document).ready( function () {
 
 
@@ -262,8 +258,6 @@
 @stack('home_scripts')
 @stack('scripts')
 
-@stack('category_scripts')
-@stack('product_scripts')
 @stack('users_scripts')
 @stack('roles_scripts')
 @stack('permissions_scripts')

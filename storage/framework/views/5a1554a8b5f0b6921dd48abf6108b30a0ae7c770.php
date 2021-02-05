@@ -91,27 +91,35 @@
         height: 30px;
         width: 200px;
     }
+    .table-hover>tbody>tr:hover {
+        background: #fbf0f0;
+    }
 </style>
 </head>
 <body>
 <?php echo $__env->make('shop.includes.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="container">
     <?php echo $__env->make('shop.includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<div id="content" style="min-height: 570px; overflow: hidden;">
 
     <?php echo $__env->yieldContent('content'); ?>
+</div>
 
 </div>
 <?php echo $__env->make('shop.includes.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 <script src="<?php echo e(url('/')); ?>/view/javascript/sweetalert2.all.min.js" type="text/javascript"></script>
-<script src="<?php echo e(url('/')); ?>/view/javascript/promise-polyfill.js" type="text/javascript"></script>
+<!--<script src="<?php echo e(url('/')); ?>/view/javascript/promise-polyfill.js" type="text/javascript"></script>-->
+<script src="<?php echo e(url('/')); ?>/view/javascript/jquery.pjax.js" type="text/javascript"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.5.2/js/jquery.overlayScrollbars.min.js"></script>
 <?php echo $__env->yieldPushContent('javaScripts'); ?>
 
 <script type="text/javascript">
+
     $('.marquee').marquee();
+
     function addToCart(id,instance = null){
         $.ajax({
             url: "<?php echo e(route('cart.add')); ?>",
@@ -150,6 +158,7 @@
         });
     }
 </script>
+
 <script type="text/javascript">
     $(function() {
         $("body").overlayScrollbars({ });
@@ -159,6 +168,12 @@
 
         });
         });
+
+
+    $('.addToCart').click(function(event) {
+        $.pjax.reload({container:'#pjax-container' });
+
+    });
 
     function alertJs(type = 'error', msg = '') {
         const Toast = Swal.mixin({

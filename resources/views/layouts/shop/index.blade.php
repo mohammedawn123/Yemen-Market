@@ -91,27 +91,35 @@
         height: 30px;
         width: 200px;
     }
+    .table-hover>tbody>tr:hover {
+        background: #fbf0f0;
+    }
 </style>
 </head>
 <body>
 @include('shop.includes.navbar')
 <div class="container">
     @include('shop.includes.message')
+<div id="content" style="min-height: 570px; overflow: hidden;">
 
     @yield('content')
+</div>
 
 </div>
 @include('shop.includes.footer')
 
 {{-- sweetalert2 --}}
 <script src="{{url('/')}}/view/javascript/sweetalert2.all.min.js" type="text/javascript"></script>
-<script src="{{url('/')}}/view/javascript/promise-polyfill.js" type="text/javascript"></script>
+<!--<script src="{{url('/')}}/view/javascript/promise-polyfill.js" type="text/javascript"></script>-->
+<script src="{{url('/')}}/view/javascript/jquery.pjax.js" type="text/javascript"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.5.2/js/jquery.overlayScrollbars.min.js"></script>
 @stack('javaScripts')
 
 <script type="text/javascript">
+
     $('.marquee').marquee();
+
     function addToCart(id,instance = null){
         $.ajax({
             url: "{{route('cart.add')}}",
@@ -150,6 +158,7 @@
         });
     }
 </script>
+
 <script type="text/javascript">
     $(function() {
         $("body").overlayScrollbars({ });
@@ -159,6 +168,12 @@
 
         });
         });
+
+
+    $('.addToCart').click(function(event) {
+        $.pjax.reload({container:'#pjax-container' });
+
+    });
 
     function alertJs(type = 'error', msg = '') {
         const Toast = Swal.mixin({

@@ -300,9 +300,8 @@ unset($__errorArgs, $__bag); ?>
 
                                      <td style="width: 170px; ">
                                          <button type="button" onclick="addToCart('<?php echo e($list['id']); ?>' ,'default')" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
-                                         <span  data-toggle="tooltip" data-original-title="Delete Customer" class="btn btn-flat btn-danger">
-                                                  <i class="fa fa-trash"></i>
-                                          </span>
+                                         <a href="<?php echo e(route('item.remove' , ['id'=> $list['id'] , 'instance'=>'wishlist'])); ?>" data-toggle="tooltip" title="" class="btn btn-danger"   data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+
                                      </td>
                                  </tr>
                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -315,24 +314,6 @@ unset($__errorArgs, $__bag); ?>
                  </div>
             </div>
              <div class="tab-pane" id="tab-order">
-
-
-
-                 Left (default):
-                 <div class="marquee">jQuery marquee is the best marquee plugin in the world</div>
-                 <br/>
-
-                 Right:
-                 <div class="marquee" data-direction='right'   data-gap='80'   >نیوزی لینڈ کے شہر ہیملٹن میں کھیلے جانے والے چوتھے میچ میں بھارت کو سات وکٹ سے شکست کا سامنا کرنا پڑا ہ</div>
-                 <br/>
-
-                 Up:
-                 <div class="marquee ver" data-direction='up' data-duration='1000' data-pauseOnHover="true">jQuery marquee is the best marquee plugin in the world. jQuery marquee is the best marquee plugin in the world <b>end</b></div>
-                 <br/>
-
-                 Down:
-                 <div class="marquee ver" data-direction='down' data-duration=1000>jQuery marquee is the best marquee plugin in the world. jQuery marquee is the best marquee plugin in the world <b>end</b></div>
-                 <br/>
 
 
              </div>

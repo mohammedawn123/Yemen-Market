@@ -6,19 +6,19 @@
 @if(trans('product.direction')=='rtl')
     <link href="{{url('/')}}/view/javascript/bootstrap/css/bootstrap-a.css" rel="stylesheet" media="screen">
     <link type="text/css" href="{{url('/')}}/view/stylesheet/stylesheet-a.css" rel="stylesheet" media="screen">
-    <link type="text/css" href="{{url('/')}}/view/stylesheet/adminlte.min.css" rel="stylesheet" media="print">
+<!--    <link type="text/css" href="{{url('/')}}/view/stylesheet/adminlte.min.css" rel="stylesheet" media="print">-->
 @endif
 @if(trans('product.direction')=='ltr')
     <link href="{{url('/')}}/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
     <link type="text/css" href="{{url('/')}}/view/stylesheet/stylesheet.css" rel="stylesheet" media="screen">
-    <link type="text/css" href="{{url('/')}}/view/stylesheet/adminlte.min.css" rel="stylesheet" media="print">
+<!--    <link type="text/css" href="{{url('/')}}/view/stylesheet/adminlte.min.css" rel="stylesheet" media="print">-->
 
 @endif
 <link type="text/css" href="{{url('/')}}/view/javascript/iCheck/square/blue.css" rel="stylesheet" media="screen">
 
 <!--codemirror-->
 <link href="{{url('/')}}/view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
-<link href="{{url('/')}}/view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+<!--<link href="{{url('/')}}/view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />-->
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.5.2/css/OverlayScrollbars.min.css" rel="stylesheet"/>
 

@@ -66,7 +66,7 @@
                         <span class="hidden-xs hidden-sm hidden-md">Wish List</span>
                         <span style="border-radius: 50%; padding: 3px;   border: 1px solid;" class="count y-wishlist" id="shopping-wishlist"><?php echo e(Cart::instance('wishlist')->count() ?? 0); ?></span>
                     </a></li>
-                <li><a href="" title="Shopping Cart">
+                <li><a href="<?php echo e(route('cart.list')); ?>" title="Shopping Cart">
                         <i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Shopping Cart</span>
                         <span style="border-radius: 50%; padding: 3px;   border: 1px solid;" class="count y-cart"><?php echo e(Cart::instance('default')->count() ?? 0); ?></span>
 
@@ -95,18 +95,22 @@
                 </div></div>
             <div class="col-sm-3" style="margin-top: 10px;">
                 <div id="cart" class="btn-group btn-block">
-                    <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+
+                    <button  type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
                         <i class="fa fa-shopping-cart"></i>
                         <span id="cart-total"><?php echo e(Cart::instance('default')->count() ?? 0); ?> item(s) - <?php echo e(currency_symbol( Cart::instance('default')->total()) ?? '$0'); ?></span>
                     </button>
-                <?php $cart= Cart::getListCart('default')  ;   ?>
-                <?php if($cart['items'] == []  ): ?>                   <ul class="dropdown-menu pull-right" style="color:black;">
-                        <li>
-                            <p class="text-center">Your shopping cart is empty!</p>
-                        </li>
-                    </ul>
-                <?php else: ?>
-                 <ul class="dropdown-menu pull-right" style="color:black;"><li>
+
+
+                 <ul id="pjax-container" class="dropdown-menu pull-right" style="color:black;">
+                     <?php $cart= Cart::getListCart('default')  ;   ?>
+                     <?php if($cart['items'] == []  ): ?>
+                              <li>
+                                 <p class="text-center">Your shopping cart is empty!</p>
+                             </li>
+
+                     <?php else: ?>
+                     <li>
                             <table class="table table-striped">
                                 <tbody>
                                 <?php $__currentLoopData = $cart['items']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -123,8 +127,7 @@
                                         <td class="text-right">x <?php echo e($item['qty']); ?></td>
                                         <td class="text-right">  <?php echo e(currency_symbol($item['price'])); ?></td>
                                         <td class="text-center">
-                                            <button type="button" onclick="cart.remove('555714');" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>
-                                            </button>
+                                            <a href="<?php echo e(route('item.remove' , ['id'=> $item['id'] , 'instance'=>'default'])); ?>" data-toggle="tooltip" title="" class="btn btn-danger"   data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -153,13 +156,15 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <p class="text-right"><a href="#"><strong><i class="fa fa-shopping-cart"></i> View Cart</strong></a>
+                                <p class="text-right">
+                                    <a href="<?php echo e(route('cart.list')); ?>"><strong><i class="fa fa-shopping-cart"></i> View Cart</strong></a>
                                     &nbsp;&nbsp;&nbsp;<a href="#"><strong><i class="fa fa-share"></i> Checkout</strong></a></p>
                             </div>
                         </li>
-
+                      <?php endif; ?>
                     </ul>
-                    <?php endif; ?>
+
+
                 </div>
             </div>
         </div>

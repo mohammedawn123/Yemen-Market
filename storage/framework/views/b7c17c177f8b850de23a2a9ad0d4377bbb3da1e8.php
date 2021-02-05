@@ -9,8 +9,7 @@
       <div class="panel-body">
         <form action="<?php echo e($action); ?>" method="POST" enctype="multipart/form-data" id="form-category" class="form-horizontal">
 
-        <?php echo e(csrf_field()); ?>
-
+        <?php echo csrf_field(); ?>
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo e(trans('product.tab_general')); ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo e(trans('product.tab_data')); ?></a></li>
@@ -170,7 +169,7 @@
 
   <?php $__env->stopSection(); ?>
 
-<?php $__env->startPush('category_scripts'); ?>
+<?php $__env->startPush('scripts'); ?>
     <script type="text/javascript">
         <?php foreach ($languages as $language) { ?>
         $('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});
@@ -185,7 +184,7 @@
                     url: "<?php echo e(url('admin/categories/autocomplete')); ?>"  ,
                     type:"post" ,
                     dataType: 'json',
-                    data: { filter_name: filter_name1 } ,
+                    data: { filter_name: filter_name1 ,   _token: '<?php echo e(csrf_token()); ?>' } ,
                     success: function(json) {
                         json.unshift({
                             category_id: 0,

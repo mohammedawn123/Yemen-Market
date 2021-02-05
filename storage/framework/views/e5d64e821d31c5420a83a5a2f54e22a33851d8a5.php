@@ -9,8 +9,9 @@
     <!-- Font Awesome -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-
-    <?php echo $__env->make('admin.includes.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<link href="<?php echo e(url('/')); ?>/view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+     <link href="<?php echo e(url('/')); ?>/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="<?php echo e(url('/')); ?>/view/stylesheet/stylesheet.css" rel="stylesheet" media="screen">
 
 </head>
 <body >
