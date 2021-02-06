@@ -52,10 +52,13 @@ class ShopCart extends Controller
         }*/
         $id=$request->get('id');
         $instance = $request->get( 'instance');
+        $quantity = $request->get( 'quantity') ?? 1;
         $product=(new Product)->getDetail($id);
+        $price=$product->getFinalPrice($id , $quantity);
+
 
         $cart = Cart::instance($instance) ;
-        $cart->add($id , $product->name ,1.0 ,$product->getPriceAfterDiscount(),[], $product->getTaxRate());
+        $cart->add($id , $product->name ,$quantity ,$price,[], $product->getTaxRate());
 
         $listCart = $cart->getListCart($instance);
         return response()->json(
@@ -81,14 +84,15 @@ class ShopCart extends Controller
 
     public function updateItem()
     {
-        $id= \request()->get('id');
+        $product_id= \request()->get('id');
         $instance= \request()->get('instance');
-        $qty= \request()->get('qty');
+        $quantity= \request()->get('qty');
         $content = Cart::instance($instance)->content();
-        if($content->has($id))
+        if($content->has($product_id))
         {
-            $old = $content->pull($id);
-            Cart::instance($instance)->add($id, $old->name, $qty, $old->price, [], $old->tax);
+            $old = $content->pull($product_id);
+            $price=(new Product)->getFinalPrice($product_id , $quantity);
+            Cart::instance($instance)->add($product_id, $old->name, $quantity,$price, [], $old->tax);
        }
        return response()->json([
            'error'      => 0,

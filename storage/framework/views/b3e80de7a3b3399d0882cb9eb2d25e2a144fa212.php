@@ -48,7 +48,7 @@
                                 </a>
                             </div>
                             <div class="caption">
-                                <h4><a href="#"><?php echo e($product->name); ?></a></h4>
+                                <h4><a href="<?php echo e(route('product.detail' ,['id'=>$product->product_id])); ?>"><?php echo e($product->name); ?></a></h4>
                                 <p>
                                    <?php echo e(substr(strip_tags($product->description), 0, 108)); ?>....
                                 </p>
@@ -57,15 +57,18 @@
                                        $price='';
                                            if($product->productSpecial() != -1)
                {
-                  $price=' <span style="text-decoration: line-through;">'. currency_symbol($product->price, null).'</span>
-                      &nbsp   <span class="text-danger">  '.  currency_symbol($product->productSpecial() , null) .'</span>';
+                  $price=' <span style="text-decoration: line-through;">'. currency_symbol( tax_price( $product->price , $product->getTaxRate()), null).'</span>
+                      &nbsp   <span class="text-danger">  '.  currency_symbol(tax_price( $product->productSpecial() , $product->getTaxRate()) , null) .'</span>';
+                $tax =tax_price($product->productSpecial(),$product->getTaxRate()) - $product->productSpecial();
                 } else
                     {
-                        $price = currency_symbol($product->price , null);
+                        $price = currency_symbol(  tax_price( $product->price , $product->getTaxRate()) , null);
+                         $tax=tax_price( $product->price,$product->getTaxRate())- $product->price;
                     }
-                                           echo $price ;
                                    ?>
-                                    <span class="price-tax">Tax: <?php echo e($product->getTaxRate()); ?> %</span>
+                                    <?php echo $price; ?>
+
+                                    <span class="price-tax">Tax: <?php echo e(currency_symbol($tax)); ?>  </span>
                                 </p>
                             </div>
                             <div class="button-group">

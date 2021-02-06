@@ -116,13 +116,13 @@
                                 <?php $__currentLoopData = $cart['items']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td class="text-center">
-                                            <a href="#">
+                                            <a href="<?php echo e(route('product.detail' , ['id'=> $item['id']] )); ?>">
                                                 <?php echo $item['image']; ?>
 
                                             </a>
                                         </td>
                                         <td class="text-left">
-                                            <a href="#"><?php echo e($item['name']); ?></a>
+                                            <a href="<?php echo e(route('product.detail' , ['id'=> $item['id']] )); ?>"><?php echo e($item['name']); ?></a>
                                         </td>
                                         <td class="text-right">x <?php echo e($item['qty']); ?></td>
                                         <td class="text-right">  <?php echo e(currency_symbol($item['price'])); ?></td>
@@ -142,13 +142,10 @@
                                         <td class="text-right"><strong>Sub-Total</strong></td>
                                         <td class="text-right">  <?php echo e($cart['subtotal']); ?></td>
                                     </tr>
+
                                     <tr>
-                                        <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                                        <td class="text-right">$6.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right"><strong>VAT (20%)</strong></td>
-                                        <td class="text-right">$220.20</td>
+                                        <td class="text-right"><strong>Tax (20%)</strong></td>
+                                        <td class="text-right">$0</td>
                                     </tr>
                                     <tr>
                                         <td class="text-right"><strong>Total</strong></td>

@@ -42,14 +42,14 @@ if (!function_exists('pagination_rows')) {
 if (!function_exists('tax_price')) {
     function tax_price($price, $tax)
     {
-        return floor($price * (100 + $tax) /100);
+        return round($price * (100 + $tax) /100);
     }
 }
 
 if (!function_exists('get_tax')) {
     function get_tax($total_price, $total_tax)
     {
-        return floor(($total_tax * 100) /$total_price);
+        return  round(($total_tax * 100) /$total_price);
     }
 }
 

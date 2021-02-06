@@ -92,24 +92,24 @@ class Product extends Model
             ->where($this->getTable() . '.status' , 1);
 
     }
-    public function getPriceAfterDiscount()
+    public function getPriceAfterDiscount($quantity =1)
     {
-        $discount = $this->discountPrice();
+        $discount = $this->discountPrice($quantity);
         if ($discount != -1) {
             return $discount;
         } else {
             return $this->price;
         }
     }
-    public function discountPrice()
+    public function discountPrice($quantity=1)
     {
-        $discount = $this->product_discounts->first();
+        $discount= $this->product_discounts()->where('quantity', $quantity)->get()->first();
 
         if ($discount) {
-            if (($discount['date_end'] >= date("yy-m-d") || $discount['date_end'] === null)
-                && ($discount['date_start'] <= date("yy-m-d") || $discount['date_start'] === null)
+            if (($discount->date_end >= date("Y-m-d") || $discount->date_end === null)
+                && ($discount->date_start <= date("Y-m-d") || $discount->date_start === null)
                ) {
-                return $discount['price'];
+                return $discount->price;
             }
         }
 
@@ -120,14 +120,33 @@ class Product extends Model
         $Special = $this->product_specials->first();
 
         if ($Special) {
-            if (($Special['date_end'] >= date("yy-m-d") || $Special['date_end'] === null)
-                && ($Special['date_start'] <= date("yy-m-d") || $Special['date_start'] === null)
+            if (($Special['date_end'] >= date("Y-m-d") || $Special['date_end'] === null)
+                && ($Special['date_start'] <= date("Y-m-d") || $Special['date_start'] === null)
             ) {
                 return $Special['price'];
             }
         }
 
         return -1;
+    }
+    public function getFinalPrice($product_id , $quantity)
+    {
+        $product=$this->getDetail($product_id);
+        // special price
+        $special=$product->productSpecial();
+        if($special != -1){
+            $price=$special;
+        }else{
+            $price=$product->price;
+        }
+        //  discount price
+        $discount=$product->discountPrice($quantity);
+        if($discount != -1){
+            $price=$discount;
+        }
+        // price after add tax
+        $price=tax_price( $price,$product->getTaxRate());
+         return $price;
     }
   public function getTaxRate() {
         $arrTaxList = tax_rate::getListAll();

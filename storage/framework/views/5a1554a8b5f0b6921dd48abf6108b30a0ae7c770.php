@@ -121,6 +121,7 @@
     $('.marquee').marquee();
 
     function addToCart(id,instance = null){
+        var quantity=$('input[name=\'quantity\']').val();
         $.ajax({
             url: "<?php echo e(route('cart.add')); ?>",
             type: "POST",
@@ -128,6 +129,7 @@
             data: {
                 "id": id,
                 "instance":instance,
+                "quantity":quantity ,
                 _token: '<?php echo e(csrf_token()); ?>'
 
             },

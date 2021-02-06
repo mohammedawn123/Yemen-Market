@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo e(trans('product.code')); ?>" dir="<?php echo e(trans('product.direction')); ?>" manifest="makecach.indexcach">
+<html lang="<?php echo e(trans('product.code')); ?>" dir="<?php echo e(trans('product.direction')); ?>" >
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

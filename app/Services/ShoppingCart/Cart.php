@@ -154,7 +154,7 @@ class Cart
         $content = $this->getContent();
 
         $total = $content->reduce(function ($total, CartItem $cartItem) {
-            return $total + ($cartItem->qty * tax_price($cartItem->price, $cartItem->tax));
+            return $total + ($cartItem->qty * $cartItem->price);
         }, 0);
         return $total;
     }
@@ -191,7 +191,7 @@ class Cart
                     'id' => $item->id,
                     'qty' => $item->qty,
                     'image' => image_thumbnail($product->image),
-                    'price' => $product->getPriceAfterDiscount(),
+                    'price' => $item->price,
                     'showPrice' => $product->price,
                     'tax' =>  $item->tax,
                     'url' => 'ddddddd',

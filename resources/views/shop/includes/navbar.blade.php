@@ -115,12 +115,12 @@
                                 @foreach($cart['items'] as $item)
                                     <tr>
                                         <td class="text-center">
-                                            <a href="#">
+                                            <a href="{{route('product.detail' , ['id'=> $item['id']] ) }}">
                                                 {!! $item['image']!!}
                                             </a>
                                         </td>
                                         <td class="text-left">
-                                            <a href="#">{{$item['name']}}</a>
+                                            <a href="{{route('product.detail' , ['id'=> $item['id']] ) }}">{{$item['name']}}</a>
                                         </td>
                                         <td class="text-right">x {{$item['qty']}}</td>
                                         <td class="text-right">  {{currency_symbol($item['price'])}}</td>
@@ -140,13 +140,10 @@
                                         <td class="text-right"><strong>Sub-Total</strong></td>
                                         <td class="text-right">  {{$cart['subtotal']}}</td>
                                     </tr>
+
                                     <tr>
-                                        <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                                        <td class="text-right">$6.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right"><strong>VAT (20%)</strong></td>
-                                        <td class="text-right">$220.20</td>
+                                        <td class="text-right"><strong>Tax (20%)</strong></td>
+                                        <td class="text-right">$0</td>
                                     </tr>
                                     <tr>
                                         <td class="text-right"><strong>Total</strong></td>
