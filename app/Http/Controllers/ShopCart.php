@@ -34,29 +34,44 @@ class ShopCart extends Controller
 
         return view('shop.cart' , $data);
     }
+    public function add(Request $request)
+    {
 
+    }
 
     public function addToCart(Request $request)
     {
         if (!$request->ajax()) {
             return redirect()->route('shop');
         }
-     /*   if(!Auth::user()) {
-            return response()->json(
-                [
-                    'error' => 1,
-                    'redirect' => route('shop.loginForm'),
-                    'msg' => '',
-                ]
-            );
-        }*/
+
+
         $id=$request->get('id');
         $instance = $request->get( 'instance');
         $quantity = $request->get( 'quantity') ?? 1;
+        $redirect = $request->get( 'redirect') ?? 1;
         $product=(new Product)->getDetail($id);
+        $minimumQuantity =$product->minimum;
+
+        if($redirect=="1" && ($product->getProductAttributes($id) || !empty($product->product_discounts()->get()->toarray()) || $minimumQuantity >1)) {
+            return response()->json(
+                [
+                    'error' => 1,
+                    'redirect' => route('product.detail' , ['id'=>$id]),
+                    'msg' => '',
+                ]
+            );
+        }
+
+      if ($quantity < $minimumQuantity){
+          return response()->json(
+              [
+                  'error' => 1,
+                  'msg' => 'This product has a minimum quantity of '.$minimumQuantity,
+              ]
+          );
+         }
         $price=$product->getFinalPrice($id , $quantity);
-
-
         $cart = Cart::instance($instance) ;
         $cart->add($id , $product->name ,$quantity ,$price,[], $product->getTaxRate());
 
@@ -90,8 +105,19 @@ class ShopCart extends Controller
         $content = Cart::instance($instance)->content();
         if($content->has($product_id))
         {
+            $product=(new Product)->getDetail($product_id);
+            $minimumQuantity =$product->minimum;
+
+            if ($quantity < $minimumQuantity){
+                return response()->json(
+                    [
+                        'error' => 1,
+                        'msg' => 'This product has a minimum quantity of '.$minimumQuantity,
+                    ]
+                );
+            }
             $old = $content->pull($product_id);
-            $price=(new Product)->getFinalPrice($product_id , $quantity);
+            $price=$product->getFinalPrice($product_id , $quantity);
             Cart::instance($instance)->add($product_id, $old->name, $quantity,$price, [], $old->tax);
        }
        return response()->json([

@@ -256,6 +256,10 @@
                    {
                        alertJs('success', data.msg);
                    }
+                   else{
+                       
+                       alertJs('error', data.msg);
+                   }
                }
            });
        }

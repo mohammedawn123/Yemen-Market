@@ -5,27 +5,28 @@
 
         <div class="row">
             <div id="content" class="col-sm-12">
-                <div class="row"> <div class="col-sm-8"> <ul class="thumbnails">
+                <div class="row"> <div class="col-sm-8">
+                        <ul class="thumbnails">
                             <li>
-                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="<?php echo e($name); ?>">
-                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;" alt="<?php echo e($name); ?>">
+                                <a class="thumbnail" style="    max-height: 180px;" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="<?php echo e($name); ?>">
+                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="" alt="<?php echo e($name); ?>">
                                 </a></li>
                             <li class="image-additional">
-                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;">
-                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;" alt="Apple Cinema 30&quot;">
+                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" ">
+                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" " alt=" ">
                                 </a></li>
                             <li class="image-additional">
                                 <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="<?php echo e($name); ?>">
                                     <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="<?php echo e($name); ?>" alt="<?php echo e($name); ?>"></a></li>
                             <li class="image-additional">
                                 <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="<?php echo e($name); ?>">
-                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;" alt="Apple Cinema 30&quot;"></a></li>
+                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" " alt=" "></a></li>
                             <li class="image-additional">
-                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;">
-                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;" alt="Apple Cinema 30&quot;"></a></li>
+                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" ">
+                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" " alt=" "></a></li>
                             <li class="image-additional">
-                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;">
-                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title="Apple Cinema 30&quot;" alt="Apple Cinema 30&quot;"></a></li>
+                                <a class="thumbnail" href="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" ">
+                                    <img src="<?php echo e(asset( '/view/image/'.$image)); ?>" title=" " alt=" "></a></li>
                         </ul>
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab-description" data-toggle="tab" aria-expanded="true">Description</a></li>
@@ -64,8 +65,8 @@
 
                     <div class="col-sm-4">
                         <div class="btn-group">
-                            <button type="button" data-toggle="tooltip" class="btn btn-default" title="" onclick="addToCart('<?php echo e($product_id); ?>','wishlist')" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" class="btn btn-default" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                            <button type="button" data-toggle="tooltip" class="btn btn-default btn-wish" title="" onclick="addToCart('<?php echo e($product_id); ?>','wishlist')" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
+                            <button type="button" data-toggle="tooltip" class="btn btn-default btn-wish" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
                         </div>
                         <h1>  <?php echo e($name); ?></h1>
                         <ul class="list-unstyled">
@@ -100,6 +101,7 @@
                                 <label class="control-label" for="input-quantity">Qty</label>
                                 <input type="text" name="quantity" value="<?php echo e($minimum); ?>" size="2" id="input-quantity" class="form-control">
                                 <input type="hidden" name="product_id" value="<?php echo e($product_id); ?>">
+                                <input type="hidden" name="checkRedirect" value="0">
                                 <br>
                                 <button onclick="addToCart('<?php echo e($product_id); ?>' ,'default')"  type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block addToCart">Add to Cart</button>
                             </div>

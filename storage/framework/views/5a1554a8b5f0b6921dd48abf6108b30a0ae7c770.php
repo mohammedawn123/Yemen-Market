@@ -9,7 +9,7 @@
 
     <?php echo $__env->make('shop.includes.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <style type="text/css">
-    .btn-primary , .btn-inverse , #menu,.search ,.dropdown-menu , .footer , #top , #menu .btn-navbar ,.product-thumb .button-group button {
+    .btn-primary , .btn-inverse , #menu,.search ,.dropdown-menu , .footer , #top , #menu .btn-navbar ,.product-thumb .button-group button ,.btn-wish{
 
         background-color: #5b5555;
         background-image: linear-gradient(to bottom, #683e3e, #bb1e1e);
@@ -122,6 +122,7 @@
 
     function addToCart(id,instance = null){
         var quantity=$('input[name=\'quantity\']').val();
+        var checkRedirect=$('input[name=\'checkRedirect\']').val();
         $.ajax({
             url: "<?php echo e(route('cart.add')); ?>",
             type: "POST",
@@ -130,6 +131,7 @@
                 "id": id,
                 "instance":instance,
                 "quantity":quantity ,
+                "redirect":checkRedirect ,
                 _token: '<?php echo e(csrf_token()); ?>'
 
             },

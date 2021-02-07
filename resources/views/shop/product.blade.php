@@ -65,8 +65,8 @@
 
                     <div class="col-sm-4">
                         <div class="btn-group">
-                            <button type="button" data-toggle="tooltip" class="btn btn-default" title="" onclick="addToCart('{{$product_id }}','wishlist')" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" class="btn btn-default" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                            <button type="button" data-toggle="tooltip" class="btn btn-default btn-wish" title="" onclick="addToCart('{{$product_id }}','wishlist')" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
+                            <button type="button" data-toggle="tooltip" class="btn btn-default btn-wish" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
                         </div>
                         <h1>  {{$name }}</h1>
                         <ul class="list-unstyled">
@@ -101,6 +101,7 @@
                                 <label class="control-label" for="input-quantity">Qty</label>
                                 <input type="text" name="quantity" value="{{$minimum}}" size="2" id="input-quantity" class="form-control">
                                 <input type="hidden" name="product_id" value="{{$product_id}}">
+                                <input type="hidden" name="checkRedirect" value="0">
                                 <br>
                                 <button onclick="addToCart('{{$product_id }}' ,'default')"  type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block addToCart">Add to Cart</button>
                             </div>
